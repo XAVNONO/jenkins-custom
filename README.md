@@ -27,7 +27,7 @@ cd jenkins-custom
 ## Lancement du conteneur jenkins-custom-test
 * A partir du dossier cloné, se mettre à la racine et lancer la commande :
 ```
-docker-compose up -d --build
+docker-compose up -d --build --tag=jenkins-custom
 ```
 
 ## Envoyer l'image sur le Hub Docker
@@ -37,9 +37,9 @@ docker login --username=xavnono
 ```
 * Tagguer votre image :
 ```
-docker tag jenkins-custom-test xavnono/jenkins-custom-test:latest
+docker tag jenkins-custom xavnono/jenkins-custom:latest
 ```
 * Pusher votre images sur le dépôt :
 ```
-docker push xavnono/jenkins-custom-test:latest
+docker push xavnono/jenkins-custom:latest
 ```
