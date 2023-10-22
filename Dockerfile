@@ -32,15 +32,20 @@ RUN apt-get update -qq \
 RUN apt-get update -qq \
     && apt-get install -y \
     wget \
-    unzip \
+    gnupg \
+    lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
 # Installation de Terraform
-RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip \
-    && unzip terraform_0.11.3_linux_amd64.zip \
-    && mv terraform /usr/bin \
-    && rm terraform_0.11.3_linux_amd64.zip \
-    && rm -rf /var/lib/apt/lists/*
+RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
+RUN apt-get update && apt-get install -y terraform
+RUN terraform --version
+# RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip \
+#     && unzip terraform_0.11.3_linux_amd64.zip \
+#     && mv terraform /usr/bin \
+#     && rm terraform_0.11.3_linux_amd64.zip \
+#     && rm -rf /var/lib/apt/lists/*
 
 # Installation de Kubectl
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl" && \
