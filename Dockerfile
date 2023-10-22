@@ -28,7 +28,7 @@ RUN apt-get update -qq \
     && apt-get install -qqy docker-compose && \
     rm -rf /var/lib/apt/lists/*
 
-# Installation de dependence wget et unzip
+# Installation de dependence wget, gnupg et lsb-release 
 RUN apt-get update -qq \
     && apt-get install -y \
     wget \

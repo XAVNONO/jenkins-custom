@@ -1,5 +1,6 @@
-# jenkins-custom+
-Création d'une image Jenkins-custom
+# jenkins-custom-test
+* Création d'une image Jenkins-custom-test contenant :
+    - 
 
 ## Pré-requis
 * Avoir une machine linux sur laquelle est installé : 
