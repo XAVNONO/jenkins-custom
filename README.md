@@ -27,7 +27,7 @@ cd jenkins-custom
 ## Lancement du conteneur jenkins-custom-xn
 * A partir du dossier cloné, se mettre à la racine et lancer la commande :
 ```
-docker-compose up -d --build --tag=jenkins-custom-xn
+docker-compose up -d --build
 ```
 
 ## Envoyer l'image sur le Hub Docker
