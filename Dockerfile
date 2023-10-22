@@ -33,7 +33,12 @@ RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/
 
+# installation de dependence conntrack
+RUN apt-get install conntrack
+
 # Installation de Minikube
 RUN curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" && \
     chmod +x minikube-linux-amd64 && \
     mv minikube-linux-amd64 /usr/local/bin/minikube
+
+CMD     tail -F /dev/null
