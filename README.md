@@ -12,6 +12,10 @@ Création d'une image Jenkins-custom
 ```
 git clone https://github.com/xavnono/jenkins-custom
 ```
+* Se placer dans le dépot récupéré :
+```
+cd jenkins-custom
+```
 
 ## Lancement du conteneur jenkins-custom+
 * A partir du dossier cloné, se mettre à la racine et lancer la commande :
