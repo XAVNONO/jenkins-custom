@@ -33,23 +33,30 @@ docker-compose up -d --build
 ## Envoyer l'image sur le Hub Docker
 * Se connecter au docker hub en commande :
 ```
-docker login --username=xavnono 
+docker login --username=<Id Hub docker> 
 ```
 * Tagguer votre image :
 ```
-docker tag jenkins-custom-xn xavnono/jenkins-custom-xn:latest
+docker tag <nom de l'image> <Id Hub docker>/<nom de l'image>:latest
 ```
 * Pusher votre images sur le dépôt :
 ```
-docker push xavnono/jenkins-custom-xn:latest
+docker <Id Hub docker>/<nom de l'image>:latest
 ```
 
 ## Envoyer une image configuré sur le Hub Docker
 * Créer l'image d'un conteneur en cours de fonctionnement :
 ```
-docker commit jenkins-custom jenkins-param-test 
+docker commit <nom du container> <nom de l'image choisi> 
 ```
 * Pusher ensuite votre images sur le dépôt :
 ```
-docker push xavnono/jenkins-param-test:latest
+docker push <Id Hub docker>/<nom de l'image>:latest
 ```
+
+## Utiliser et lancer un container depuis une image Hub Docker
+* Choisir l'image sur Hub docker et faire la commande suivante :
+```
+docker pull <Id Hub docker>/<nom_de_l_image>:latest 
+```
+docker run -d --name <mon_conteneur> <nom_de_l_image>:tag
