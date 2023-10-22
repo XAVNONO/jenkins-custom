@@ -43,3 +43,13 @@ docker tag jenkins-custom-xn xavnono/jenkins-custom-xn:latest
 ```
 docker push xavnono/jenkins-custom-xn:latest
 ```
+
+## Envoyer une image configuré sur le Hub Docker
+* Créer l'image d'un conteneur en cours de fonctionnement :
+```
+docker commit jenkins-custom jenkins-param-test 
+```
+* Pusher ensuite votre images sur le dépôt :
+```
+docker push xavnono/jenkins-param-test:latest
+```
