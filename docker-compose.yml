@@ -3,7 +3,7 @@ services:
   jenkins:
     build: .
     ports:
-      - 8888:8080
+      - 8555:8080
     container_name: jenkins-custom
     volumes:
       - jenkins_home:/var/jenkins_home
