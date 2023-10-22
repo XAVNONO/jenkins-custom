@@ -46,7 +46,7 @@ RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s
     mv kubectl /usr/local/bin/
 
 # installation de dependence conntrack
-RUN apt-get install conntrack
+RUN apt-get install -y conntrack
 
 # Installation de Minikube
 RUN curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" && \
