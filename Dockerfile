@@ -8,7 +8,7 @@ USER root
 RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
 
-# Téléchargement de la clé GPG du référentiel de Docker 
+# Téléchargement de la clé GPG du référentiel de docker 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 # Ajoute le référentiel Docker au fichier de configuration des sources APT 
 RUN add-apt-repository \
@@ -22,3 +22,6 @@ RUN apt-get update  -qq \
 
 # Ajoute l'utilisateur Jenkins au groupe docker pour communication avec le daemon docker    
 RUN usermod -aG docker jenkins
+
+# Installation de docker-compose
+RUN apt install docker-compose
