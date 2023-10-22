@@ -23,5 +23,5 @@ RUN apt-get update  -qq \
 # Ajoute l'utilisateur Jenkins au groupe docker pour communication avec le daemon docker    
 RUN usermod -aG docker jenkins
 
-# Installation de docker-compose
-RUN apt install docker-compose
+# # Installation de docker-compose
+# RUN apt install docker-compose
