@@ -59,4 +59,6 @@ docker push <Id Hub docker>/<nom de l'image>:latest
 ```
 docker pull <Id Hub docker>/<nom_de_l_image>:latest 
 ```
+```
 docker run -d --name <mon_conteneur> <nom_de_l_image>:tag
+```
