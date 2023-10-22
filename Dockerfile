@@ -27,3 +27,16 @@ RUN usermod -aG docker jenkins
 RUN apt-get update -qq \
     && apt-get install -qqy docker-compose && \
     rm -rf /var/lib/apt/lists/*
+
+# Installation de Kubectl
+RUN apk update && apk add curl
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl" && \
+    chmod +x kubectl && \
+    mv kubectl /usr/local/bin/
+
+# Installation de Minikube
+RUN curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" && \
+    chmod +x minikube-linux-amd64 && \
+    mv minikube-linux-amd64 /usr/local/bin/minikube
+
+ENTRYPOINT ["minikube"]
