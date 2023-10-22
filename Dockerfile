@@ -29,16 +29,18 @@ RUN apt-get update -qq \
     rm -rf /var/lib/apt/lists/*
 
 # Installation de dependence wget et unzip
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq \
+    && apt-get install -y \
     wget \
     unzip \
-  && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Installation de Terraform
 RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip \
-  && unzip terraform_0.11.3_linux_amd64.zip \
-  && mv terraform /usr/bin \
-  && rm terraform_0.11.3_linux_amd64.zip
+    && unzip terraform_0.11.3_linux_amd64.zip \
+    && mv terraform /usr/bin \
+    && rm terraform_0.11.3_linux_amd64.zip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Installation de Kubectl
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl" && \
@@ -46,7 +48,9 @@ RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/`curl -s
     mv kubectl /usr/local/bin/
 
 # installation de dependence conntrack
-RUN apt-get install -y conntrack
+RUN apt-get update -qq \
+    && apt-get install -y conntrack \
+    && rm -rf /var/lib/apt/lists/*
 
 # Installation de Minikube
 RUN curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" && \
