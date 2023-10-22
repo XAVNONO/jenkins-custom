@@ -1,6 +1,12 @@
 # jenkins-custom-test
+
+## Objectif
 * Création d'une image Jenkins-custom-test contenant :
-    - 
+    - Docker
+    - docker-compose
+    - Terraform
+    - Kubectl
+    - Minikube
 
 ## Pré-requis
 * Avoir une machine linux sur laquelle est installé : 
@@ -18,16 +24,22 @@ git clone https://github.com/xavnono/jenkins-custom
 cd jenkins-custom
 ```
 
-## Lancement du conteneur jenkins-custom+
+## Lancement du conteneur jenkins-custom-test
 * A partir du dossier cloné, se mettre à la racine et lancer la commande :
 ```
 docker-compose up -d --build
 ```
 
-* Cela permet d'avoir une image de jenkins qui contient Docker (qui nous sera utile pour les actions d'intégration et de déploiement continue) et de lancer un conteneur
-
-* Une fois le conteneur lancé (vérifier qu'il est au statut up), se rendre à l'url : 
+## Envoyer l'image sur le Hub Docker
+* Se connecter au docker hub en commande :
 ```
-http://localhost:8555 
+docker login --username=xavnono 
 ```
-  pour accéder à l'interface de Jenkins.
+* Tagguer votre image :
+```
+docker tag jenkins-custom-test xavnono/jenkins-custom-test:latest
+```
+* Pusher votre images sur le dépôt :
+```
+docker push xavnono/jenkins-custom-test:latest
+```
